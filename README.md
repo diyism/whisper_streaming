@@ -6,6 +6,7 @@
 	pip3 install --upgrade --no-deps --force-reinstall git+https://github.com/linto-ai/whisper-timestamped
 	
 	pip install --upgrade librosa
+        pip install numpy==1.24.3
 	
 	python whisper_online_server.py --model small --language zh --backend whisper_timestamped
 
