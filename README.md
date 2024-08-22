@@ -1,16 +1,16 @@
-	pip3 install \
+	$ pip3 install \
 	     torch==1.13.1+cpu \
 	     torchaudio==0.13.1+cpu \
 	     -f https://download.pytorch.org/whl/torch_stable.html
 	
-	pip3 install --upgrade --no-deps --force-reinstall git+https://github.com/linto-ai/whisper-timestamped
+	$ pip3 install --upgrade --no-deps --force-reinstall git+https://github.com/linto-ai/whisper-timestamped
 	
-	pip install --upgrade librosa msgpack
-	pip install numpy==1.24.3
+	$ pip install --upgrade librosa msgpack
+	$ pip install numpy==1.24.3
 	
-	python whisper_online_server.py --vad --model small --language zh --backend whisper_timestamped 2>&1 | grep INCOMPLETE
+	$ python whisper_online_server.py --vad --model small --language zh --backend whisper_timestamped 2>&1 | grep INCOMPLETE
 	#arecord -f S16_LE -c1 -r 16000 -t raw -D default | nc localhost 43007
- 	parecord -v --rate=16000 --channels=1 --format=s16le -d bluez_input.1C_52_16_70_D9_77.0 --file-format=raw | nc localhost 43007
+ 	$ parecord -v --rate=16000 --channels=1 --format=s16le -d bluez_input.1C_52_16_70_D9_77.0 --file-format=raw | nc localhost 43007
 
   	#the "python whisper_online_server.py ... | grep INCOMPLETE" will output:
 	DEBUG	INCOMPLETE: (0.32, 1.14, '字 幕 製 作 人   沛 隊   沛 隊   沛 隊')
