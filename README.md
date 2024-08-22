@@ -1,3 +1,14 @@
+	pip3 install \
+	     torch==1.13.1+cpu \
+	     torchaudio==0.13.1+cpu \
+	     -f https://download.pytorch.org/whl/torch_stable.html
+	
+	pip3 install --upgrade --no-deps --force-reinstall git+https://github.com/linto-ai/whisper-timestamped
+	
+	pip install --upgrade librosa
+	
+	python whisper_online_server.py --model small --language zh --backend whisper_timestamped
+
 # whisper_streaming
 Whisper realtime streaming for long speech-to-text transcription and translation
 
