@@ -5,10 +5,11 @@
 	
 	pip3 install --upgrade --no-deps --force-reinstall git+https://github.com/linto-ai/whisper-timestamped
 	
-	pip install --upgrade librosa
+	pip install --upgrade librosa msgpack
         pip install numpy==1.24.3
 	
 	python whisper_online_server.py --model small --language zh --backend whisper_timestamped
+	arecord -f S16_LE -c1 -r 16000 -t raw -D default | nc localhost 43007
 
 # whisper_streaming
 Whisper realtime streaming for long speech-to-text transcription and translation
