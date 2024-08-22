@@ -8,15 +8,15 @@
 	pip install --upgrade librosa msgpack
 	pip install numpy==1.24.3
 	
-	python whisper_online_server.py --model small --language zh --backend whisper_timestamped 2>&1 | grep INCOMPLETE
+	python whisper_online_server.py --vad --model small --language zh --backend whisper_timestamped 2>&1 | grep INCOMPLETE
 	#arecord -f S16_LE -c1 -r 16000 -t raw -D default | nc localhost 43007
  	parecord -v --rate=16000 --channels=1 --format=s16le -d bluez_input.1C_52_16_70_D9_77.0 --file-format=raw | nc localhost 43007
 
   	#the "python whisper_online_server.py ... | grep INCOMPLETE" will output:
-	DEBUG	INCOMPLETE: (0.1, 2.56, '字 幕 製 作 人   沛 隊 剪 輯   沛 隊 剪 輯   沛 隊 剪 輯')
-	DEBUG	INCOMPLETE: (2.21, 2.49, '你好')
-	DEBUG	INCOMPLETE: (None, None, '')
-	DEBUG	INCOMPLETE: (2.51, 10.96, '  起來')
+	DEBUG	INCOMPLETE: (0.32, 1.14, '字 幕 製 作 人   沛 隊   沛 隊   沛 隊')
+	DEBUG	INCOMPLETE: (2.71, 4.51, '你好   蓋 哥')
+	DEBUG	INCOMPLETE: (4.55, 9.58, '  蓋 哥  你 好')
+	DEBUG	INCOMPLETE: (8.82, 9.58, ' 你 好')
 
 # whisper_streaming
 Whisper realtime streaming for long speech-to-text transcription and translation
